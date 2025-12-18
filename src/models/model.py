@@ -1,12 +1,12 @@
 import sqlite3
 from typing import List, Dict, Any, Optional
 
+from src.models.init_db import connection
 
-class DatabaseModel:
-    def __init__(self, db_path='exchange_rates.db'):
-        self.db_path = db_path
-        self.conn = sqlite3.connect(self.db_path)
-        self.conn.row_factory = sqlite3.Row
+
+class CurrencyExchangeDAO:
+    def __init__(self, conn = connection):
+        self.conn = conn
         
     
     def get_all_currencies(self) -> List[Dict[str, Any]]:

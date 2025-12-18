@@ -2,13 +2,12 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 import urllib.parse
 
-from src.models.model import DatabaseModel  
+from src.models.model import CurrencyExchangeDAO  
+
 from src.controller.error_handler import ErrorHandler
 
 
-db = DatabaseModel()
-db.conn.execute('PRAGMA journal_mode=WAL;')  
-db.conn.execute('PRAGMA synchronous=NORMAL;')  
+db = CurrencyExchangeDAO()  
 
 
 class SimpleHandler(BaseHTTPRequestHandler):
@@ -162,9 +161,9 @@ class SimpleHandler(BaseHTTPRequestHandler):
     def do_OPTIONS(self):
         """Обрабатывает preflight-запросы CORS для браузера (например, перед POST/PATCH). Возвращает 200 без тела."""
         self.send_response(200)
-        self.send_header('Access-Control-Allow-Origin', '*')  # Разрешает запросы с любого домена (для теста; в проде укажите конкретный)
-        self.send_header('Access-Control-Allow-Methods', 'GET, POST, PATCH, OPTIONS')  # Разрешенные методы
-        self.send_header('Access-Control-Allow-Headers', 'Content-Type')  # Разрешенные заголовки (для форм)
+        self.send_header('Access-Control-Allow-Origin', '*')  # 
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, PATCH, OPTIONS')  # 
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type')  #
         self.end_headers()    
 
 
