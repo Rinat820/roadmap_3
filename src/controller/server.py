@@ -2,8 +2,8 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 import urllib.parse
 
-from models.model import DatabaseModel  
-from services.error_handler import ErrorHandler
+from src.models.model import DatabaseModel  
+from src.controller.error_handler import ErrorHandler
 
 
 db = DatabaseModel()
