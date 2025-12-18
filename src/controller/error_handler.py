@@ -9,18 +9,11 @@ class ErrorHandler:
             try:
                 return func(self, *args, **kwargs)
             except ValueError as e:
-                if str(e) == "Коды валют пары отсутствуют в адресе":
-                    self.send_response(400)
-                    self.send_header('Content-type', 'application/json')
-                    self.send_header('Access-Control-Allow-Origin', '*')
-                    self.end_headers()
-                    self.wfile.write(json.dumps({"message": str(e)}).encode('utf-8'))
-                else:
-                    self.send_response(400)
-                    self.send_header('Content-type', 'application/json')
-                    self.send_header('Access-Control-Allow-Origin', '*')
-                    self.end_headers()
-                    self.wfile.write(json.dumps({"message": "Ошибка валидации"}).encode('utf-8'))
+                self.send_response(400)
+                self.send_header('Content-type', 'application/json')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.end_headers()
+                self.wfile.write(json.dumps({"message": str(e)}).encode('utf-8'))
             except KeyError as e:
                 self.send_response(404)
                 self.send_header('Content-type', 'application/json')
