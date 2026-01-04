@@ -2,10 +2,10 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 import urllib.parse
 
-from src.models.currency_dao import CurrencyDAO
-from src.models.exchange_rate_dao import ExchangeRateDAO
+from src.backend.dao.currency_dao import CurrencyDAO
+from src.backend.dao.exchange_rate_dao import ExchangeRateDAO
 
-from src.controller.error_handler import ErrorHandler
+from src.backend.controller.error_handler import ErrorHandler
 
 
 currency_repo = CurrencyDAO()

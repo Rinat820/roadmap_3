@@ -1,9 +1,9 @@
 import sqlite3
 from typing import List, Dict, Any, Optional
 
-from src.models.base_dao import BaseDAO
+from src.backend.dao.base_dao import BaseDAO
 
-from src.models.init_db import connection
+from src.backend.db.init_db import connection
 
 
 class CurrencyDAO(BaseDAO):
